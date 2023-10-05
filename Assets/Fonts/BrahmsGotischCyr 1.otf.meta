@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: e29cadc62fd454e4ba6aae3e1e8f2c3f
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Brahms Gotisch Cyr
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 7eeccfab4798dc44fb8eeea7d0f6c87a, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
