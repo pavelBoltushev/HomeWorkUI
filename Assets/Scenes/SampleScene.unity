@@ -331,7 +331,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6df3074c6f121ca4aada14b025ea1f96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _changeSpeed: 20
+  OnValueChanged:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 264925150}
+        m_TargetAssemblyTypeName: HealthDisplay, Assembly-CSharp
+        m_MethodName: StartChangeDisplayedValue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &264925150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -347,6 +361,7 @@ MonoBehaviour:
   _health: {fileID: 264925149}
   _healthBar: {fileID: 224197120}
   _healthValueText: {fileID: 372343230}
+  _changeSpeed: 20
 --- !u!1 &372343228
 GameObject:
   m_ObjectHideFlags: 0
@@ -1093,7 +1108,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 264925149}
         m_TargetAssemblyTypeName: Health, Assembly-CSharp
-        m_MethodName: StartChangeValue
+        m_MethodName: ChangeValue
         m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1209,7 +1224,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 264925149}
         m_TargetAssemblyTypeName: Health, Assembly-CSharp
-        m_MethodName: StartChangeValue
+        m_MethodName: ChangeValue
         m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
