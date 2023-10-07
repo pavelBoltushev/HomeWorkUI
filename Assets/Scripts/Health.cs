@@ -1,46 +1,27 @@
-using System.Collections;
 using UnityEngine;
-
+using UnityEngine.Events;
 
 public class Health : MonoBehaviour
-{    
-    [SerializeField] private float _changeSpeed;
-
-    private float _targetValue;
-    private bool _isCoroutineInProgress;
+{
+    [SerializeField] private UnityEvent OnValueChanged;
 
     public float Value { get; private set; }
 
     private void Start()
     {
-        Value = 50;
-        _targetValue = Value;
+        Value = 50;        
     }    
 
-    public void StartChangeValue(float changeMagnitude)
+    public void ChangeValue(float changeMagnitude)
     {
-        _targetValue += changeMagnitude;
+        Value += changeMagnitude;
 
-        if (_targetValue > 100)
-            _targetValue = 100;
+        if (Value > 100)
+            Value = 100;
 
-        if (_targetValue < 0)
-            _targetValue = 0;
+        if (Value < 0)
+            Value = 0;
 
-        if (_isCoroutineInProgress == false)
-            StartCoroutine(ChangeValue());        
-    }    
-    
-    private IEnumerator ChangeValue()
-    {
-        _isCoroutineInProgress = true;
-
-        while (Value != _targetValue)
-        {
-           Value = Mathf.MoveTowards(Value, _targetValue, _changeSpeed * Time.deltaTime);
-           yield return null;
-        }
-
-        _isCoroutineInProgress = false;
-    }    
+        OnValueChanged.Invoke();
+    }            
 }
