@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] private UnityEvent OnValueChanged;
+    public event UnityAction ValueChanged;
 
     public float Value { get; private set; }
 
@@ -13,15 +13,8 @@ public class Health : MonoBehaviour
     }    
 
     public void ChangeValue(float changeMagnitude)
-    {
-        Value += changeMagnitude;
-
-        if (Value > 100)
-            Value = 100;
-
-        if (Value < 0)
-            Value = 0;
-
-        OnValueChanged.Invoke();
+    {        
+        Value = Mathf.Clamp(Value + changeMagnitude, 0, 100);
+        ValueChanged?.Invoke();
     }            
 }

@@ -10,22 +10,32 @@ public class HealthDisplay : MonoBehaviour
     [SerializeField] private float _changeSpeed;
 
     private float _displayedValue;
-    private bool _isCoroutineInProgress;
+    private bool _isChangeDisplayedValueInProgress;
 
     private void Start()
     {
         SetDisplayedValue(_health.Value);
     }
 
+    private void OnEnable()
+    {
+        _health.ValueChanged += StartChangeDisplayedValue;
+    }
+
+    private void OnDisable()
+    {
+        _health.ValueChanged -= StartChangeDisplayedValue;
+    }
+
     public void StartChangeDisplayedValue()
     {
-        if (_isCoroutineInProgress == false)        
+        if (_isChangeDisplayedValueInProgress == false)        
             StartCoroutine(ChangeDisplayedValue());        
     }
 
     private IEnumerator ChangeDisplayedValue()
     {
-        _isCoroutineInProgress = true;
+        _isChangeDisplayedValueInProgress = true;
 
         while (_displayedValue != _health.Value)
         {
@@ -33,7 +43,7 @@ public class HealthDisplay : MonoBehaviour
             yield return null;
         }
 
-        _isCoroutineInProgress = false;
+        _isChangeDisplayedValueInProgress = false;
     }
 
     private void SetDisplayedValue(float value)
